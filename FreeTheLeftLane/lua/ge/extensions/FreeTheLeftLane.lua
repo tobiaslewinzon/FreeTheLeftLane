@@ -5,7 +5,7 @@ local M = {}
 local RIGHT_IS_POSITIVE = true
 local DEFAULT_ROAD_WIDTH = 8.0
 local MAX_SEARCH_DIST = 60.0
-local LOG = 'rightLaneFilter'
+local LOG = 'FreeTheLeftLane'
 
 -- --- vec helpers ---
 local UP = {x=0,y=0,z=1}
@@ -23,6 +23,14 @@ local function lerpWidth(ws,i,t) local w1=ws[i]; local w2=ws[i+1] or ws[i]; retu
 -- --- DecalRoad cache ---
 local roads = {}
 local function _toNum(v, fallback) local n=tonumber(v); return n~=nil and n or fallback end
+
+-- The function run when SHIFT+T is pressed
+local function runMyScript()
+  -- put whatever you want to execute here
+  log('I', 'FreeTheLeftLane', 'T Pressed: running Free The Left Lane')
+  M.collectDecalRoads()
+  -- e.g., start your filtering, toggle, etc.
+end
 
 local function collectDecalRoads()
   roads = {}
@@ -137,9 +145,11 @@ function teleportVidRandom(vid)
   return true
 end
 
-
 -- hooks
-local function onExtensionLoaded() collectDecalRoads() end
+local function onExtensionLoaded()    -- binds SHIFT+T
+  collectDecalRoads()      -- your current init
+end
+
 local function onMissionLoaded()   collectDecalRoads() end
 
 local function onVehicleSpawned(vid)                 safeHandle('spawn', vid) end
@@ -156,4 +166,6 @@ M.onVehicleResetted            = onVehicleResetted
 M.onTrafficVehicleSpawned      = onTrafficVehicleSpawned
 M.onTrafficVehicleReplaced     = onTrafficVehicleReplaced
 M.teleportVidRandom            = teleportVidRandom
+M.runMyScript                  = runMyScript
+M.collectDecalRoads            = collectDecalRoads
 return M

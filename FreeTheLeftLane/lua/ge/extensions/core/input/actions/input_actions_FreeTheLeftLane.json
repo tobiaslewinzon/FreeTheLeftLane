@@ -1,0 +1,3 @@
+{
+    "runMyScript"     :{"cat":"debug", "order": 128, "ctx": "tlua", "onDown"  :"extensions.FreeTheLeftLane.runMyScript()", "actionMap": "Global", "title": "Run Free The Left Lane Script", "desc": "Executes the Free The Left Lane script to collect road data" }
+}

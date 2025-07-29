@@ -1,4 +1,4 @@
-# FreeThe ~~Nipple~~ LefttLane!
+# FreeThe~~Nipple~~LefttLane!
 For high speed cruising on the Autobahn without cars blocking the left lane (most of the time, anyways).
 
 ## What does this do?
@@ -19,3 +19,9 @@ If you want to change the binding you can do so in Settings -> Controls -> Searc
 - The script only acts when cars are spawned. It cannot intervene on an AI Traffic vehicle suicidal decision of switching lanes on the way of a maniac going 300 km/h. 
 - Spawn many traffic cars. Like 10-15. Remember that maybe half of them will be constantly teleporting to another galaxy.
 - I don't know if this has a performance impact.
+
+## After
+https://www.youtube.com/watch?v=tYksjKD_ov8
+
+## Before
+https://www.youtube.com/watch?v=NwLI3jbddNw

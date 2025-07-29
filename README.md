@@ -8,7 +8,7 @@ It's easier to explain in pseudocode:
 3) If the car is on the left lane, it immediately teleports it somewhere else on the map (or out of the map :D)
 4) A maniac can now pass by at 260 km/h (you).
  
- This is my first script ever. I basically put together this together on a windy Saturday night, maybe a little bit drunk, fine-prompting ChatGTP and Cursor. So go easy on me. Any help is welcome! (I need it) 
+ This is my first Lua script ever. I basically put this together on a windy Saturday night, maybe a little bit drunk, fine-prompting ChatGTP and Cursor to get a smooth and fast Autobahn drive on this magnificent map. So go easy on me. Any help is welcome! (I need it) 
 ## How to install
 Drag FreeTheLeftLane.zip to your repo folder.
 ## How to use

@@ -10,7 +10,8 @@ It's easier to explain in pseudocode:
  
  This is my first Lua script ever. I basically put this together on a windy Saturday night, maybe a little bit high, fine-prompting ChatGTP and Cursor to get a smooth and fast Autobahn drive on this magnificent map. So go easy on me. Any help is welcome!
 ## How to install
-Drag FreeTheLeftLane.zip to your repo folder.
+Zip all the contents of FreeTheLeftLane and add it to your repo folder.
+Otherwise just put the FreeTheLeftLane folder inside 0.36/mods/unpacked
 ## How to use
 Press "t" (letter T) on the keyboard.
 If you want to change the binding you can do so in Settings -> Controls -> Search for "Free The"

@@ -146,8 +146,7 @@ end
 
 -- hooks
 local function onExtensionLoaded()  collectDecalRoads() end
-local function onMissionLoaded()   collectDecalRoads()  end
-local function onVehicleResetted(vid)                safeHandle('resetted', vid) end
+local function onVehicleResetted(vid) safeHandle('resetted', vid) end
 
 M.onExtensionLoaded            = onExtensionLoaded
 M.onMissionLoaded              = onMissionLoaded

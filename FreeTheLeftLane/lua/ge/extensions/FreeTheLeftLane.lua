@@ -133,7 +133,7 @@ function teleportVidRandom(vid)
   if not v then return false, "vehicle not found" end
 
   local p = v:getPosition()
-  local minR, maxR = 150, 400
+  local minR, maxR = 300, 800
   local r   = minR + math.random() * (maxR - minR)
   local ang = math.random() * (2 * math.pi)
 

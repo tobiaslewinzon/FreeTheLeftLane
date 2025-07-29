@@ -1,4 +1,4 @@
-# FreeThe~~Nipple~~LefttLane!
+# FreeThe~~Nipple~~LeftLane!
 For high speed cruising on the Autobahn without cars blocking the left lane (most of the time, anyways).
 
 ## What does this do?

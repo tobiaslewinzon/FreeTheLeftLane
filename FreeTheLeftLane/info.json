@@ -1,6 +1,6 @@
 {
   "name": "FreeTheLeftLane",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "morothorwol",
   "description": "Free-roam helper that prevents AI traffic from spawning in the left lane on one-way 2-lane decal roads by teleporting or deleting left-lane spawns.",
   "license": "MIT"

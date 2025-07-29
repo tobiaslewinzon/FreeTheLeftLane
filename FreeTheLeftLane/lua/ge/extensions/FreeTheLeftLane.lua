@@ -24,14 +24,13 @@ local function lerpWidth(ws,i,t) local w1=ws[i]; local w2=ws[i+1] or ws[i]; retu
 local roads = {}
 local function _toNum(v, fallback) local n=tonumber(v); return n~=nil and n or fallback end
 
--- The function run when SHIFT+T is pressed
+-- The function run when key binding is pressed
 local function runMyScript()
-  -- put whatever you want to execute here
   log('I', 'FreeTheLeftLane', 'T Pressed: running Free The Left Lane')
   M.collectDecalRoads()
-  -- e.g., start your filtering, toggle, etc.
 end
 
+-- Collects all DecalRoad objects in the scene and stores them in the roads table.
 local function collectDecalRoads()
   roads = {}
   local ids = scenetree.findClassObjects and scenetree.findClassObjects("DecalRoad") or {}
@@ -54,6 +53,7 @@ local function collectDecalRoads()
   log('I', LOG, ('Cached %d DecalRoad(s).'):format(#roads))
 end
 
+-- Finds the nearest DecalRoad to a given world position and returns information about it.
 local function nearestRoadInfo(worldPos)
   local best, bestD2 = nil, MAX_SEARCH_DIST*MAX_SEARCH_DIST
   for _, rd in ipairs(roads) do
@@ -81,6 +81,7 @@ local function nearestRoadInfo(worldPos)
   return best
 end
 
+-- Calculates the index of the right lane based on the width, number of lanes, and lateral signed distance.
 local function rightLaneIndex1(width, lanesLeft, lanesRight, lateralSigned)
   local total = math.max(1, lanesLeft + lanesRight)
   local laneWidth = width / total
@@ -91,6 +92,7 @@ local function rightLaneIndex1(width, lanesLeft, lanesRight, lateralSigned)
   return math.max(1, math.min(lanesRight, right0 + 1)), laneWidth, lat
 end
 
+-- Handles vehicle events safely by checking if the vehicle is valid and not player-controlled.
 local function safeHandle(tag, vid)
   local ok, err = pcall(function()
     local v = be:getObjectByID(vid)
@@ -99,7 +101,6 @@ local function safeHandle(tag, vid)
     local pos = v:getPosition()
     local info = nearestRoadInfo(pos)
     if not info then
-      --log('I', LOG, ('%s vid=%s (no nearby DecalRoad)'):format(tag, tostring(vid)))
       return
     end
 
@@ -107,12 +108,9 @@ local function safeHandle(tag, vid)
     if L == 0 and R == 2 then
       local lane1, laneWidth, lat = rightLaneIndex1(info.width, L, R, info.lateral)
 
-      -- >>> log when it’s on right lane 1 (inner lane)
+      -- Teleport the vehicle out of the way if it's on the left lane.
       if lane1 == 1 then
         log('I', LOG, string.format('Car on wrong lane! car vid: %s', tostring(vid)))
-        -- if you also want to delete here, you can add:
-        -- local ts = string.format('if (isObject(%d)) { %d.delete(); }', vid, vid)
-        -- TorqueScript.eval(ts)
         teleportVidRandom(vid)
         return
       end
@@ -123,6 +121,7 @@ local function safeHandle(tag, vid)
   end
 end
 
+-- Teleports a vehicle to a random position within a specified radius.
 function teleportVidRandom(vid)
   if not __tlr_seeded then
     math.randomseed(os.time() % 2147483647)
@@ -146,18 +145,9 @@ function teleportVidRandom(vid)
 end
 
 -- hooks
-local function onExtensionLoaded()    -- binds SHIFT+T
-  collectDecalRoads()      -- your current init
-end
-
-local function onMissionLoaded()   collectDecalRoads() end
-
-local function onVehicleSpawned(vid)                 safeHandle('spawn', vid) end
+local function onExtensionLoaded()  collectDecalRoads() end
+local function onMissionLoaded()   collectDecalRoads()  end
 local function onVehicleResetted(vid)                safeHandle('resetted', vid) end
-
--- If these exist on your build, they’ll get called; otherwise harmless:
-local function onTrafficVehicleSpawned(vid)          safeHandle('trafficSpawn', vid) end
-local function onTrafficVehicleReplaced(oldVid, vid) safeHandle('trafficReplaced', vid) end
 
 M.onExtensionLoaded            = onExtensionLoaded
 M.onMissionLoaded              = onMissionLoaded

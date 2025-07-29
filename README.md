@@ -5,7 +5,7 @@ For high speed cruising on the Autobahn without cars blocking the left lane (mos
 It's easier to explain in pseudocode:
 1) Hooks `onVehicleResetted(vid)` which runs every time AI Traffic spawns a car.
 2) Runs its coordinates against some cached decal road lanes map I don't even understand.
-3) If the car is on the left lane, it immediately teleports it somewhere else on the map (or out of the map :D)
+3) If the car is on the left lane, it immediately teleports it to some random coordinate on the level (or out of the level :D)
 4) A maniac can now pass by at 260 km/h (you).
  
  This is my first Lua script ever. I basically put this together on a windy Saturday night, maybe a little bit drunk, fine-prompting ChatGTP and Cursor to get a smooth and fast Autobahn drive on this magnificent map. So go easy on me. Any help is welcome! (I need it) 

@@ -22,8 +22,8 @@ If you want to change the binding you can do so in Settings -> Controls -> Searc
 - Spawn many traffic cars. Like 10-15. Remember that maybe half of them will be constantly teleporting to another galaxy.
 - It's very probable this has a huge performance impact. I didn't measure it though.
 
-## After
-https://www.youtube.com/watch?v=tYksjKD_ov8
-
 ## Before
 https://www.youtube.com/watch?v=NwLI3jbddNw
+
+## After
+https://www.youtube.com/watch?v=tYksjKD_ov8
